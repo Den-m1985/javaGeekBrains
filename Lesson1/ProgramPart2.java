@@ -32,6 +32,26 @@ public class ProgramPart2 {
         if (t > r) y = t;
         System.out.println(y);
 
+        // Тернарный оператор
+        int u = 1;
+        int i = 2;
+        int min = u < i ? u : i; //Если u < i то возвращается u
+        System.out.println(min);
+
+        int mounth = 10;
+        String text = "";
+        switch (mounth) {
+            case 1:
+                text = "Autumn";
+                break;
+
+            default:
+                text = "mistake";
+                break;
+        }
+
+
+
     }
 
 }
