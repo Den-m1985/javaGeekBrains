@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Program {
     public static void main(String[] args) {
         float p = 2.7f;
@@ -24,6 +26,16 @@ public class Program {
         //error: incompatible types:
         //String cannot be converted to double
 
+        System.out.println(Integer.MAX_VALUE); // 2147483647
+        System.out.println(Integer.MIN_VALUE); // -2147483648
+
+        /*
+        Присваивание: =
+        ● Арифметические: *, /, +, -, %, ++, --
+        ● Операции сравнения: <, >, ==, !=, >=, <=
+        ● Логические операции: ||, &&, ^, !
+        ● Побитовые операции <<, >>, &, |, ^
+         */
 
         int a = 123;
         System.out.println(a++); // Постфиксный инкремент a++ не имеет приоритет над выводом в консоли.
@@ -70,6 +82,61 @@ public class Program {
             }
             System.out.println();
         }
+
+
+        Scanner iScanner = new Scanner(System.in);
+        System.out.printf("name: ");
+        String name = iScanner.nextLine();
+        System.out.printf("Привет, %s!", name);
+        iScanner.close();
+
+        Scanner iScanner2 = new Scanner(System.in);
+        System.out.printf("int a: ");
+        int r = iScanner2.nextInt();
+        System.out.printf("double a: ");
+        double t = iScanner2.nextDouble();
+        System.out.printf("%d + %f = %f", r, t, r + t);
+        iScanner2.close();
+
+        // проверка на валидность типа данных
+        Scanner iScanner3 = new Scanner(System.in);
+        System.out.printf("int a: ");
+        boolean flag = iScanner3.hasNextInt(); // здесть проверка
+        System.out.println(flag);
+        int i = iScanner3.nextInt();
+        System.out.println(i);
+        iScanner3.close();
+
+        // форматированный вывод
+        int g = 1, f = 2;
+        int h = g + f;
+        String res = g + " + " + f + " = " + h; // получается 4 строки, код не эффективный
+        System.out.println(res);
+
+        int k = 1, l = 2;
+        int z = k + l;
+        String res2 = String.format("%d + %d = %d \n", k, l, z);
+        System.out.printf("%d + %d = %d \n", k, l, z);
+        System.out.println(res2);
+
+        // Виды спецификаторов:
+        /*
+        %d: целочисленных значений
+        %x: для вывода шестнадцатеричных чисел
+        %f: для вывода чисел с плавающей точкой
+        %e: для вывода чисел в экспоненциальной форме,
+        например, 3.1415e+01
+        %c: для вывода одиночного символа
+        %s: для вывода строковых значений
+         */
+
+        float pi2 = 3.1415f;
+        System.out.printf("%f\n", pi2); // 3,141500
+        System.out.printf("%.2f\n", pi2); // 3,14
+        System.out.printf("%.3f\n", pi2); // 3,141
+        System.out.printf("%e\n", pi2); // 3,141500e+00
+        System.out.printf("%.2e\n", pi2); // 3,14e+00
+        System.out.printf("%.3e\n", pi2); // 3,141e+00
 
 
     }
