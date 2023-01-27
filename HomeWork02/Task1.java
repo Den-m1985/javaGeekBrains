@@ -8,6 +8,26 @@ public class Task1 {
     //Результат "select * from students where “name” = “Ivanov” and “country”=”Russia” …
 
     public static void main(String[] args) {
+        String str = "{'name':'Ivanov', 'country':'Russia', 'city':'Moscow', 'age':'null'}"
+                .replace("{", "").replace("}", "")
+                .replace("'", "");
+
+        String[] parts = str.split(",");
+        for (String s: parts) {
+            if (s.equals("name:Ivanov"))
+                System.out.println(s);
+        }
+
+        int index = parts[0].indexOf(':');
+        String s = parts[0].substring(index+1);
+
+        //System.out.println("select * from students where “name” = " + s);
 
     }
+
+    private static String getFileExtension(String str) {
+        int index = str.indexOf('.');
+        return index == -1? null : str.substring(index);//обрезать расширение
+    }
+
 }
