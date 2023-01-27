@@ -31,6 +31,16 @@ public class Program {
         String a = "aaaabbbcddad";
         System.out.println(compressString(a));
 
+
+        /*
+        Напишите метод, который принимает на вход строку
+        (StringBulder) и определяет является ли строка палиндромом
+        (возвращает boolean значение).
+        equals и StringBulder для revers
+         */
+        System.out.println(isPolindrom("kazak"));
+
+
     }
 
     public static String compressString(String name){
@@ -41,4 +51,11 @@ public class Program {
         }
         return b;
     }
+
+
+    public static Boolean isPolindrom(String name){
+        StringBuilder revName = new StringBuilder(name).reverse();
+        return name.equals(revName.toString());
+    }
+
 }
