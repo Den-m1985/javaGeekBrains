@@ -1,6 +1,5 @@
 import java.io.IOException;
 import java.util.logging.FileHandler;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
@@ -11,7 +10,7 @@ public class Task2 {
     public static void main(String[] args) throws IOException {
         int [] mas = {11, 3, 14, 16, 7};
         boolean isSorted = false;
-        int buf;
+        int buf = 0;
         while(!isSorted) {
             isSorted = true;
             for (int i = 0; i < mas.length-1; i++) {
@@ -29,34 +28,16 @@ public class Task2 {
         }
 
         log();
-
-
     }
 
     public static void log() throws IOException {
         Logger logger = Logger.getLogger(Task2.class.getName());
-        //ConsoleHandler ch = new ConsoleHandler(); // Все ошибки будут выпадать в терминал.
-        FileHandler fh = new FileHandler("log.txt");
+        FileHandler fh = new FileHandler("logTask2.txt");
         logger.addHandler(fh); // Добавляем аргумент для нашего logger.
-
         SimpleFormatter sFormat = new SimpleFormatter();
         fh.setFormatter(sFormat);
+        //logger.setUseParentHandlers(false); // убираем логи с консоли.
+        logger.info("Array sort successful");
 
-        //logger.setLevel(Level.INFO);
-        logger.log(Level.WARNING, "Тестовое логирование 1");
-        //logger.info("Тестовое логирование 2");
-
-
-        /*
-        Использование
-        Logger logger = Logger.getLogger()
-        Уровни важности
-        INFO, DEBUG, ERROR, WARNING и др.
-        Вывод
-        ConsoleHandler info = new ConsoleHandler();
-        log.addHandler(info);
-        Формат вывода: структурированный, абы как*
-        XMLFormatter, SimpleFormatter
-         */
     }
 }
