@@ -13,15 +13,15 @@ public class Task1 {
                 .replace("'", "");
 
         String[] parts = str.split(",");
-        for (String s: parts) {
-            if (s.equals("name:Ivanov"))
-                System.out.println(s);
-        }
+        //for (String s: parts) {
+        //    if (s.equals("name:Ivanov"))
+        //        //System.out.println(s);
+        //}
 
         int index = parts[0].indexOf(':');
         String s = parts[0].substring(index+1);
 
-        //System.out.println("select * from students where “name” = " + s);
+        System.out.println("select * from students where “name” = " + s);
 
     }
 
