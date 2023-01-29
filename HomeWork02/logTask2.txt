@@ -1,2 +1,8 @@
-янв. 28, 2023 7:40:10 PM Task2 log
-INFO: Array sort successful
+янв. 29, 2023 4:54:52 PM Task2 main
+INFO: sort operation 
+янв. 29, 2023 4:54:52 PM Task2 main
+INFO: sort operation 
+янв. 29, 2023 4:54:52 PM Task2 main
+INFO: sort operation 
+янв. 29, 2023 4:54:52 PM Task2 main
+INFO: sort operation 

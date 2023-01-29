@@ -8,6 +8,16 @@ public class Task2 {
     // результат после каждой итерации запишите в лог-файл.
 
     public static void main(String[] args) throws IOException {
+
+        Logger logger = Logger.getLogger(Task4.class.getName());
+        FileHandler fh = new FileHandler("logTask2.txt");
+        logger.addHandler(fh); // Добавляем аргумент для нашего logger.
+
+        SimpleFormatter sFormat = new SimpleFormatter();
+        fh.setFormatter(sFormat);
+        logger.setUseParentHandlers(false); // убираем логи с консоли.
+
+
         int [] mas = {11, 3, 14, 16, 7};
         boolean isSorted = false;
         int buf = 0;
@@ -20,6 +30,7 @@ public class Task2 {
                     buf = mas[i];
                     mas[i] = mas[i+1];
                     mas[i+1] = buf;
+                    logger.info("sort operation ");
                 }
             }
         }
@@ -27,17 +38,6 @@ public class Task2 {
             System.out.println(ar);
         }
 
-        log();
     }
 
-    public static void log() throws IOException {
-        Logger logger = Logger.getLogger(Task2.class.getName());
-        FileHandler fh = new FileHandler("logTask2.txt");
-        logger.addHandler(fh); // Добавляем аргумент для нашего logger.
-        SimpleFormatter sFormat = new SimpleFormatter();
-        fh.setFormatter(sFormat);
-        //logger.setUseParentHandlers(false); // убираем логи с консоли.
-        logger.info("Array sort successful");
-
-    }
 }
