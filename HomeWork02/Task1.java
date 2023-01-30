@@ -10,24 +10,21 @@ public class Task1 {
     public static void main(String[] args) {
         String str = "{'name':'Ivanov', 'country':'Russia', 'city':'Moscow', 'age':'null'}"
                 .replace("{", "").replace("}", "")
-                .replace("'", "");
+                .replace("'", "").replace(" ", "");
 
-        String[] parts = str.split(",");
-        //for (String s: parts) {
-        //    if (s.equals("name:Ivanov"))
-        //        //System.out.println(s);
-        //}
+        String[] parts = str.split(","); // разделяем по символу
 
-        int index = parts[0].indexOf(':');
-        String s = parts[0].substring(index+1);
-
-        System.out.println("select * from students where “name” = " + s);
+        StringBuilder sqlSelect = new StringBuilder("select * from students where " +
+                "name = " + getFileExtension(parts[0]) + " and " +
+                "country = " + getFileExtension(parts[1]) + " and " +
+                "city = " + getFileExtension(parts[2]));
+        System.out.println(sqlSelect);
 
     }
 
     private static String getFileExtension(String str) {
-        int index = str.indexOf('.');
-        return index == -1? null : str.substring(index);//обрезать расширение
+        int index = str.indexOf(':');
+        return index == -1? null : str.substring(index+1);//обрезать по символу
     }
 
 }
