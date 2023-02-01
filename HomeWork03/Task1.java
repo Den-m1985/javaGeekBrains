@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -11,11 +12,13 @@ public class Task1 {
 
         List<Integer> array = FillList();
         PrintList(array);
-        PrintList(sortArray(array));
+        PrintList(sortMerge(array));
 
-
-        //PrintList(sortArray(array));
-
+        int[] arr = {2,3,6,5,9,8,4,2,2,1};
+        int [] temp = mergeSort(arr);
+        for (int x: temp) {
+            System.out.print(x + " ");
+        }
     }
 
     public static List<Integer> FillList() {
@@ -36,174 +39,126 @@ public class Task1 {
     }
 
 
+    public static int[] mergeSort(int[] src) {
+        if (src.length <= 1) return src;
+        int[] left = Arrays.copyOfRange(src, 0, src.length / 2);
+        //for (int x:left) {
+            //System.out.print(x + " ");
+        //}
+        //System.out.println();
+        int[] right = Arrays.copyOfRange(src, left.length, src.length);
+        return merge(mergeSort(left), mergeSort(right));
+    }
 
-    public static List<Integer> sortArray(List<Integer> arrayA) { // сортировка Массива который передается в функцию
+    private static int[] merge(int[] left, int[] right) {
+        int resIn = 0, leftIn = 0, rightIn = 0;
+        int[] result = new int[left.length + right.length];
+
+        while (leftIn < left.length && rightIn < right.length)
+            if (left[leftIn] < right[rightIn])
+                result[resIn++] = left[leftIn++];
+            else result[resIn++] = right[rightIn++];
+
+        while (resIn < result.length)
+            if (leftIn != left.length)
+                result[resIn++] = left[leftIn++];
+            else result[resIn++] = right[rightIn++];
+
+        return result;
+    }
+
+
+
+
+
+
+    public static List<Integer> sortMerge(List<Integer> arrayA) {
+        //https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%80%D1%82%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0_%D1%81%D0%BB%D0%B8%D1%8F%D0%BD%D0%B8%D0%B5%D0%BC
+        List<Integer> arrayLeft = new ArrayList<>();
+        List<Integer> arrayRight = new ArrayList<>();
+        List<Integer> temp = new ArrayList<>();
         int lengthArrayA = arrayA.size();
-        
 
-        if (lengthArrayA < 2) {
-            return arrayA; // возврат в рекурсию в строки ниже см комменты.
-        }
-        // копируем левую часть от начала до середины
-        //int [] arrayB = new int[arrayA.size() / 2];
-        List<Integer> arrayB = new ArrayList<>();
+
+        if (lengthArrayA == 1 || lengthArrayA == 0) return arrayA;
+        //if len(A) == 1 or len(A) == 0:
+        //return A
+
+
         for (int i = 0; i < lengthArrayA/2; i++) {
-            arrayB.add(arrayA.get(i));
+            arrayLeft.add(arrayA.get(i));
         }
-        //System.arraycopy(arrayA, 0, arrayB, 0, arrayA.size() / 2);
-
-        // копируем правую часть от середины до конца массива, вычитаем из длины первую часть
-        List<Integer> arrayC = new ArrayList<>();
-        //int [] arrayC = new int[arrayA.length - arrayA.length / 2];
+        //arrayLeft. (sortMerge(arrayA.get(lengthArrayA/2)));
         for (int i = lengthArrayA / 2; i < lengthArrayA; i++) {
-            arrayC.add(arrayA.get(i));
+            arrayRight.add(arrayA.get(i));
         }
-        //System.arraycopy(arrayA, lengthArrayA / 2, arrayC, 0, lengthArrayA - lengthArrayA / 2);
-
-        // рекурсией закидываем поделенные обе части обратно в наш метод, он будет крутится до тех пор,
-        // пока не дойдет до 1 элемента в массиве, после чего вернется в строку и будет искать второй такой же,
-        // точнее правую часть от него и опять вернет его назад
-        arrayB = sortArray(arrayB); // левая часть возврат из рекурсии строкой return arrayA;
-        arrayC = sortArray(arrayC); // правая часть возврат из рекурсии строкой return arrayA;
-
-        // далее опять рекурсия возврата слияния двух отсортированных массивов
-        return mergeArray(arrayB, arrayC);
-    }
-
-    public static List<Integer> mergeArray(List<Integer> arrayА, List<Integer> arrayB) {
-        //function merge (left, right)
-        int lengthArrayA = arrayА.size();
-        int lengthArrayB = arrayB.size();
-        int length = lengthArrayA + lengthArrayB;
-        List<Integer> arrayC = new ArrayList<>();
-        //var list result
-
-        while (lengthArrayA > 0 && lengthArrayB > 0) {
-            //while length(left) > 0 and length (right) > 0
+        arrayLeft = sortMerge(arrayLeft); // левая часть возврат из рекурсии строкой return arrayA;
+        arrayRight = sortMerge(arrayRight); // правая часть возврат из рекурсии строкой return arrayA;
+        //L = merge_sort(A[:len(A) // 2])
+        //R = merge_sort(A[len(A) // 2:])
+        /*
+        for (Integer x: arrayLeft) {
+            System.out.print(x + " x");
+        }
+        System.out.println();
+        */
+        int n = 0, m = 0, k = 0;
+        //n = m = k = 0
 
 
-            if (arrayА.get(0) <= arrayB.get(0)) {
-                arrayC.add(arrayА.get(0));
-                for (int i = 0; i < lengthArrayA; i++) {
-                    arrayА.add(arrayА.get(i)); //??????????????
-                }
+        //C = [0] * (len(L) + len(R)) //?????
+
+        while (n < arrayLeft.size() && m < arrayRight.size()){
+            if (arrayLeft.get(n) <= arrayRight.get(m)){
+                temp.add(arrayLeft.get(n));
+                n += 1;
             }
-            //if first(left) ≤first(right)
-            //append first (left) to result
-            //left = rest(left)
-
+            //while n < len(L) and m < len(R):
+            //if L[n] <= R[m]:
+            //C[k] = L[n]
+            //n += 1
             else {
-                arrayC.add(arrayB.get(0));
-                for (int i = 0; i < lengthArrayA; i++) {
-                    arrayB.add(arrayB.get(i)); //??????????????
-                }
-                //else
-                //append first (right) to result
-                //right = rest(right)
+                temp.add(arrayRight.get(m));
+                m += 1;
+                k += 1;
             }
+            //else:
+            //C[k] = R[m]
+            //m += 1
+            //k += 1
+        }
+        while (n < arrayLeft.size()){
+            temp.add(arrayLeft.get(n));
+            n += 1;
+            k += 1;
+            //while n < len(L):
+            //C[k] = L[n]
+            //n += 1
+            //k += 1
+        }
+        while (m < arrayRight.size()){
+            temp.add(arrayRight.get(m));
+            m += 1;
+            k += 1;
+            /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! Где-то в этом месте
+            for (int i = 0; i < lengthArrayA; i++) {
+                arrayA.add(temp.get(i));
+            }*/
+            //while m < len(R):
+            //C[k] = R[m]
+            //m += 1
+            //k += 1
+            //for i in range(len(A)):
+            //A[i] = C[i]
+
 
         }
 
-        //while length(left) > 0
-        //append first (left) to result
-                //left = rest(left)
-        //while length(right) > 0
-        //append first (right) to result
-                //right = rest(right)
-        return arrayC;
+        //return A
+
+
+        return arrayA;
     }
-/*
-    public static List<Integer> mergeArray(List<Integer> arrayА, List<Integer> arrayB) {
-        List<Integer> arrayC = new ArrayList<>();
-
-        int lengthArrayA = arrayА.size();
-        int lengthArrayB = arrayB.size();
-        int length = lengthArrayA + lengthArrayB;
-        //int [] arrayC = int[arrayA.length + arrayB.length];
-        int positionA = 0, positionB = 0;
-
-        for (int i = 0; i < length; i++) {
-            if (positionA == lengthArrayA) {
-                //arrayC[i] = arrayB[i - positionB];
-                arrayC.add(i, arrayB.get(i - positionB));
-                positionB++;
-            } else if (positionB == lengthArrayB) {
-                //arrayC[i] = arrayA[i - positionA];
-                arrayC.add(i, arrayА.get(i - positionA));
-                positionA++;
-            } else if (arrayА.get(i - positionA) < arrayB.get(i - positionB)) {
-                //arrayC[i] = arrayA[i - positionA];
-                arrayC.add(i, arrayА.get(i - positionA));
-                positionB++;
-            } else {
-                //arrayC[i] = arrayB[i - positionB];
-                arrayC.add(i, arrayB.get(i - positionA));
-                positionA++;
-            }
-        }
-        return arrayC;
-    }
-*/
-
-/*
-    public static int [] merge_sort(int up, int down, int left, int right){
-
-        *
-         * Сортирует массив, используя рекурсивную сортировку слиянием
-         * up - указатель на массив, который нужно сортировать
-         * down - указатель на массив с, как минимум, таким же размером как у 'up', используется как буфер
-         * left - левая граница массива, передайте 0, чтобы сортировать массив с начала
-         * right - правая граница массива, передайте длину массива - 1,
-         * чтобы сортировать массив до последнего элемента
-         * возвращает: указатель на отсортированный массив. Из-за особенностей работы данной реализации
-         * отсортированная версия массива может оказаться либо в 'up', либо в 'down'
-         *
-
-        if (left == right)
-        {
-            down[left] = up[left];
-            return down;
-        }
-
-        int middle = left + (right - left) / 2;
-
-        // разделяй и сортируй
-        int l_buff = merge_sort(up, down, left, middle);
-        int r_buff = merge_sort(up, down, middle + 1, right);
-
-        // слияние двух отсортированных половин
-        int target = l_buff == up ? down : up;
-
-        int l_cur = left, r_cur = middle + 1;
-        for (int i = left; i <= right; i++)
-        {
-            if (l_cur <= middle && r_cur <= right)
-            {
-                if (l_buff[l_cur] < r_buff[r_cur])
-                {
-                    target[i] = l_buff[l_cur];
-                    l_cur++;
-                }
-                else
-                {
-                    target[i] = r_buff[r_cur];
-                    r_cur++;
-                }
-            }
-            else if (l_cur <= middle)
-            {
-                target[i] = l_buff[l_cur];
-                l_cur++;
-            }
-            else
-            {
-                target[i] = r_buff[r_cur];
-                r_cur++;
-            }
-        }
-        return target;
-    }
-*/
 
 
 }
