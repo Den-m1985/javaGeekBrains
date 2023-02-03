@@ -14,8 +14,8 @@ public class Ex03 {
 
         Integer[] arr = {5, 6, 7, 3, 4, 6, 6};
         Stack<Integer> stack = new Stack<>();
-        Queue<Integer> queue = new LinkedList<>();
-        Collections.addAll(stack, arr);
+        Queue<Integer> queue = new LinkedList<>(); // очередь
+        Collections.addAll(stack, arr);  // добавить из arr в stack.
         Collections.addAll(queue, arr);
         PrintStack(stack);
         System.out.println("\n");
@@ -24,14 +24,14 @@ public class Ex03 {
     }
 
     public static void PrintStack(Stack<Integer> stack) {
-        while (!stack.isEmpty()) {
+        while (!stack.isEmpty()) { // пока stack пустой
             System.out.print(stack.pop());
         }
     }
 
     public static void PrintQueue(Queue<Integer> queue) {
         while (!queue.isEmpty()) {
-            System.out.print(queue.remove());
+            System.out.print(queue.remove());  // удаляем последний элемент
         }
     }
 }
