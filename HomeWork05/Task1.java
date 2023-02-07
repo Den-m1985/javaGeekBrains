@@ -2,7 +2,17 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
-
+/*
+HashMap
+put(K,V) – добавить пару если или изменить значение,если ключ имеется.
+putIfAbsent(K,V) – произвести добавление если ключ не найден.
+get(K) - получение значения по указанному ключу.
+remove(K) – удаляет пару по указанному ключу.
+containsValue(V) – проверка наличия значения.
+containsKey(V) – проверка наличия ключа.
+keySet() – возвращает множество ключей.
+values() – возвращает набор значений.
+ */
 
 public class Task1 {
     /*
