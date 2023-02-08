@@ -7,13 +7,25 @@ public class Task3 {
     public static void main(String[] args) {
         int[] array = fillArray();
 
+        long start = System.nanoTime();
         System.out.print("Origin array: ");
-        printArray(array);
-
-        sort(array);
+        printArray(array);          // Печатаем оригинальный массив
+        int [] arr = array.clone();
+        sort(array);                     // Соритруем
 
         System.out.print("Sorted array: ");
-        printArray(array);
+        printArray(array);      // Печатаем сортированный массив
+        long end = System.nanoTime();
+        long a = end - start;
+        System.out.println("Time in nano sec: " + a);
+
+        System.out.println();
+        long start2 = System.nanoTime();
+        Arrays.sort(arr);        // Встроенная сортировка для наглядности
+        printArray(arr);
+        long end2 = System.nanoTime();
+        long b = end2 - start2;
+        System.out.println("Time in nano sec: " + b);
 
     }
 
