@@ -50,28 +50,7 @@ public class Ex01 {
                  System.out.print(iterator3.next() + " ");  // 1 2 3 4 5 6
              }
 
-
-
-            // Integer[] arr = FillMas();
-            // //PrintMas(arr);
-            // HashSet<Integer> set = new HashSet<>(Arrays.asList(arr));
-            // System.out.println(set);
-            // System.out.println(set.size()*100.0/arr.length);
         }
 
-        public static Integer[] FillMas() {
-            Integer[] arr = new Integer[1000];
-            for (int i = 0; i < arr.length; i++) {
-                Random random = new Random();
-                arr[i] = random.nextInt(25);
-            }
-            return arr;
-        }
-        public static void PrintMas(Integer[] arr) {
-            for (int i : arr) {
-                System.out.print(i+" ");
-            }
-            System.out.println();
-        }
 
 }

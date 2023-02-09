@@ -47,6 +47,13 @@ public class Cat {
         if (this.name.equals(compareCat.name) && this.color.equals(compareCat.color)) return true;
         return false;
     }
+
+
+    /*
+    Создайте метод public int hashCode()
+    который будет возвращать hash, вычисленный на основе полей класса Cat.
+    (Можно использовать Objects.hash(...))
+     */
     @Override
     public int hashCode() {
         int res = this.name.hashCode() + this.color.hashCode() + this.breed.hashCode();
