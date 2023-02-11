@@ -38,13 +38,12 @@ public class Controller {
                             SortColor();
                             break;
                     }
-                }else System.out.println("Ведите число от 1 до 4\n");
+                } else System.out.println("Ведите число от 1 до 4\n");
 
             } else System.out.println("Ведите число от 1 до 4\n");
 
         }
         iScanner.close();
-
 
     }
 
@@ -63,7 +62,7 @@ public class Controller {
         System.out.println("Выборка по оперативной памяти:");
 
         for (Map.Entry<Integer, LapTop> el : Task1.shop.entrySet()) {
-            System.out.print(el.getValue().GetMemoryRAM() + "\n");
+            System.out.print(el.getValue().GetNameCompany() + " - " + el.getValue().GetMemoryRAM() + "\n");
         }
         System.out.println();
     }
@@ -73,7 +72,7 @@ public class Controller {
         System.out.println("Выборка по жесткому диску:");
 
         for (Map.Entry<Integer, LapTop> el : Task1.shop.entrySet()) {
-            System.out.print(el.getValue().GetVolumeHD() + "\n");
+            System.out.print(el.getValue().GetNameCompany() + " - " + el.getValue().GetVolumeHD() + "\n");
         }
         System.out.println();
     }
@@ -83,7 +82,7 @@ public class Controller {
         System.out.println("Выборка по операционной системе:");
 
         for (Map.Entry<Integer, LapTop> el : Task1.shop.entrySet()) {
-            System.out.print(el.getValue().GetOS() + "\n");
+            System.out.print(el.getValue().GetNameCompany() + " - " + el.getValue().GetOS() + "\n");
         }
         System.out.println();
     }
@@ -93,7 +92,7 @@ public class Controller {
         System.out.println("Выборка по цвету:");
 
         for (Map.Entry<Integer, LapTop> el : Task1.shop.entrySet()) {
-            System.out.print(el.getValue().GetColor() + "\n");
+            System.out.print(el.getValue().GetNameCompany() + " - " + el.getValue().GetColor() + "\n");
         }
         System.out.println();
     }

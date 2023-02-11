@@ -53,20 +53,29 @@ public class LapTop {
         return this.color = color;
     }
 
+    /** Возврат объема RAM */
     public String GetMemoryRAM (){
         return this.memoryRAM;
     }
 
+    /** Возврат объема HD */
     public String GetVolumeHD (){
         return this.volumeHD;
     }
 
+    /** Возврат имени ОС */
     public String GetOS (){
         return this.operatingSystem;
     }
 
+    /** Возврат цвета */
     public String GetColor (){
         return this.color;
+    }
+
+    /** Возврат бренда */
+    public String GetNameCompany (){
+        return this.nameCompany;
     }
 
 
