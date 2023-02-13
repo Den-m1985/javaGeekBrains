@@ -10,12 +10,6 @@ public static List<String> lapTopBase = Arrays.asList(
         "Lenovo Linux 1000Gb 8Gb White"
 );
     public static void main(String[] args) {
-        //LapTop laptop = new LapTop();
-//        laptop.NameCompany("Asus");
-//        laptop.OperatingSystem("Windows");
-//        laptop.VolumeHD("500Gb");
-//        laptop.MemoryRAM("8Gb");
-//        laptop.Color("Black");
 
         NewLaptop(lapTopBase);
         System.out.println();
@@ -40,6 +34,5 @@ public static List<String> lapTopBase = Arrays.asList(
         }
         return shop;
     }
-
 
 }

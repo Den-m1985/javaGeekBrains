@@ -20,7 +20,7 @@ public class Controller {
             String number = iScanner.next();
             if (number.equals("q")) {
                 System.out.println("Выход");
-                break; // если символ "ничего". Остановка цикла через Enter.
+                break;
             } else if (isDigit(number)) {
                 int enterNumber = Integer.parseInt(number);
                 if (enterNumber > 0 && enterNumber < 5) {
